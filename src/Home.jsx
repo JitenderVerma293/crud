@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -15,9 +16,21 @@ const Home = () => {
         apiFetch()
     },[])
     console.log(data)
+
+     function del(id){
+// console.log("hlo")
+let result= confirm("want to delete the data")
+if(result){
+    axios.delete(`http://localhost:3030/Product/${id}`)
+    window.location.reload()
+}else{
+
+}
+     }
  
   return (
     <div>
+        <button><Link to={"/create"}>Create</Link></button>
       <table  border="5px">
         <thead>
             <tr>
@@ -39,8 +52,9 @@ const Home = () => {
                         <td>{category}</td>
                         <td>
                             <div>
+                                <button><Link to="/view">View</Link></button>
                                 <button>Update</button>
-                                <button>Delete</button>
+                                <button onClick={()=>{del(id)}}>Delete</button>
                             </div>
                         </td>
                     </tr>
