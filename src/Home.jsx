@@ -52,8 +52,8 @@ if(result){
                         <td>{category}</td>
                         <td>
                             <div>
-                                <button><Link to="/view">View</Link></button>
-                                <button>Update</button>
+                                <button><Link to={`/view/${id}`}>View</Link></button>
+                                <button><Link to={`/update/${id}`}>Update</Link></button>
                                 <button onClick={()=>{del(id)}}>Delete</button>
                             </div>
                         </td>
